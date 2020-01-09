@@ -1,50 +1,33 @@
-import React, { Component } from "react";
-import ReactMapGL, {GeolocateControl} from "react-map-gl";
+import React, { PureComponent } from "react";
+import ReactMapGL,{ Marker } from "react-map-gl";
+import axios from "axios";
+import { PropTypes } from 'react'
+//import Markers from "./Markers.js";
+class Map extends PureComponent {
+ state = this.props.viewport;
 
-class Map extends Component {
-  state = {
-    viewport: {
-      longitude: -122.45,
-      latitude: 37.78,
-      zoom: 14
-    }
-  }
-  componentDidMount() {
+ render() {
+   console.log('this.state', this.state);
+  const {viewport} = this.state;
+  const data = this.props.restaurants;
+  console.log("restauratnsmap", this.props.restaurants);
+   return (
+     <ReactMapGL {...viewport}
+       width="800px"
+       height="600px"
+       mapboxApiAccessToken={'pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazRlc3Y5eHowNjFmM25xd3kxNHF5dGRwIn0.MF6RC_cojTTpx9OSgud_Og'}
+       onViewportChange= {this.props.update(viewport)}
+        // {viewport => this.setState({viewport})}
+       >
+       <Marker
+   latitude={this.props.userLocation.latitude}
+   longitude={this.props.userLocation.longitude}
+ >
+   <img className="location-icon" src="user-location.png"/>
+ </Marker>
 
-  console.log("Component mounted")
+     </ReactMapGL>
+   );
  }
-  // setUserLocation = () => {
-  //             navigator.geolocation.getCurrentPosition(position => {
-  //                 let newViewport = {
-  //                     height: "100vh",
-  //                     width: "100vw",
-  //                     latitude: position.coords.latitude,
-  //                     longitude: position.coords.longitude,
-  //                     zoom: 12
-  //                 }
-  //                 this.setState({
-  //                     viewport: newViewport
-  //                 })
-  //             })
-  //         }
-  render() {
-    console.log(this.state)
-    const {viewport} = this.state;
-    return (
-      // <div>
-      // <button onClick={this.setUserLocation}> Show Restaurants near me </button>
-      <ReactMapGL {...viewport}
-        width="800px"
-        height="600px"
-        mapboxApiAccessToken={'pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazRlc3Y5eHowNjFmM25xd3kxNHF5dGRwIn0.MF6RC_cojTTpx9OSgud_Og'}
-        onViewportChange={viewport => this.setState({viewport})}
-        >
-        <GeolocateControl
-          positionOptions={{enableHighAccuracy: true}}
-          trackUserLocation={true} />
-
-      </ReactMapGL>
-    );
-  }
 }
 export default Map;
