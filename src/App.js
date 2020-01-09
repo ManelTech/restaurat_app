@@ -9,7 +9,6 @@ import { PropTypes } from 'react'
 class App extends Component {
   constructor(props){
     super(props)
-    this.handler = this.handler.bind(this);
     this.state = {
       restaurants: [],
       viewport: {
@@ -22,8 +21,10 @@ class App extends Component {
         longitude: 16
       }
     }
+
+    // this.handler = this.handler.bind(this);
   }
-handler(viewport){
+handler = (viewport) => {
   this.setState({viewport})
 }
 componentDidMount(){
@@ -52,20 +53,33 @@ componentDidMount(){
     }
     })
     .then(res => {
+      console.log('res', res);
       const restaurants = res.data.businesses;
       this.setState({restaurants});
     })
-    console.log(this.state);
     })
-    console.log(this.state.userLocation)
  }
+
+ viewportChange = (viewport) => {
+   // console.log('viewport', viewport);
+   this.setState({viewport})
+ }
+
  render(){
+   console.log('this.state.restaurants', this.state.restaurants);
+   console.log('this.state.viewport', this.state.viewport);
   return (
     <div className="App">
      <div className="main">
        <div className="map">
-       <Map viewport = {this.state.viewport} userLocation = {this.state.userLocation} state = {this.state}   restaurants= {this.state.restaurants} update= {this.handler} />
+         <Map
+           viewport={this.state.viewport}
+           viewportChange={this.viewportChange}
+           userLocation = {this.state.userLocation}
+           restaurants={this.state.restaurants}
+         />
        </div>
+
        <div className="restaurants">
        <Restaurants restaurants= {this.state.restaurants} />
        </div>
