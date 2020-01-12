@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import ReactMapGL from 'react-map-gl';
-import Map from './Map.js';
+import ReactMapGL , {Marker } from 'react-map-gl';
+//import Map from './Map.js';
 import Restaurants from './Restaurants.js';
 import axios from 'axios';
+import Markers from './Markers.js'
+
 import { PropTypes } from 'react'
 
 class App extends Component {
   constructor(props){
     super(props)
-    this.handler = this.handler.bind(this);
+    // this.handler = this.handler.bind(this);
     this.state = {
       restaurants: [],
       viewport: {
@@ -23,9 +25,7 @@ class App extends Component {
       }
     }
   }
-handler(viewport){
-  this.setState({viewport})
-}
+
 componentDidMount(){
     let getPosition = function() {
       return new Promise( function(resolve, reject) {
@@ -38,7 +38,7 @@ componentDidMount(){
         viewport: {
           longitude: position.coords.longitude,
           latitude: position.coords.latitude,
-          // zoom: 13
+          zoom: 13
         },
         userLocation: {
           latitude: position.coords.latitude,
@@ -46,7 +46,7 @@ componentDidMount(){
         }
       })
 
-      axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?/term=restaurants&radius=1000&latitude=${this.state.userLocation.latitude}&longitude= ${this.state.userLocation.longitude}`, {
+      axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?/term=restaurants&radius=500&latitude=${this.state.userLocation.latitude}&longitude= ${this.state.userLocation.longitude}`, {
       headers: {
         Authorization: 'Bearer W6BV1P4sxNrQ3v6Cle7VWvMrf0sJ_SwwsP_lV4TeY8KYZ4OiUbC2GX0ZRGw2KVeRbgNFkmwSO5RtZt747DCUK3nCya67uqife5hu9bekL96ykquG4npUJwHNL6cPXnYx'
     }
@@ -55,16 +55,29 @@ componentDidMount(){
       const restaurants = res.data.businesses;
       this.setState({restaurants});
     })
-    console.log(this.state);
     })
-    console.log(this.state.userLocation)
  }
- render(){
+
+render(){
+  const {viewport} = this.state;
   return (
     <div className="App">
      <div className="main">
        <div className="map">
-       <Map viewport = {this.state.viewport} userLocation = {this.state.userLocation} state = {this.state}   restaurants= {this.state.restaurants} update= {this.handler} />
+       <ReactMapGL {...viewport}
+         width="800px"
+         height="600px"
+         mapboxApiAccessToken={'pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazRlc3Y5eHowNjFmM25xd3kxNHF5dGRwIn0.MF6RC_cojTTpx9OSgud_Og'}
+         onViewportChange={viewport => this.setState({viewport})}
+         >
+         <Marker
+     latitude={this.state.userLocation.latitude}
+     longitude={this.state.userLocation.longitude}
+   >
+     <img className="location-icon" src="user-location.png"/>
+   </Marker>
+   <Markers restaurants={this.state.restaurants} />
+       </ReactMapGL>
        </div>
        <div className="restaurants">
        <Restaurants restaurants= {this.state.restaurants} />

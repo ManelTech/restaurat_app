@@ -5,9 +5,9 @@ import axios from "axios";
 class Markers extends PureComponent {
   render() {
 
-    const {data} = this.props;
-    return data.map(
-      restaurant => <Marker  longitude={restaurant.longitude} latitude={restaurant.latitude} ><img src="restaurants.png" /> </Marker>
+    const data = this.props.restaurants;
+    return this.props.restaurants.map(
+      restaurant => <Marker  longitude={restaurant.coordinates.longitude} latitude={restaurant.coordinates.latitude} ><img src="restaurants.png" /> </Marker>
     )
   }
 
