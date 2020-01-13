@@ -74,7 +74,7 @@ render(){
      latitude={this.state.userLocation.latitude}
      longitude={this.state.userLocation.longitude}
    >
-     <img className="location-icon" src="user-location.png"/>
+     <img className="location-icon" src="user-location.png" alt="You"/>
    </Marker>
    <Markers restaurants={this.state.restaurants} />
        </ReactMapGL>

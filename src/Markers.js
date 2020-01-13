@@ -7,7 +7,7 @@ class Markers extends PureComponent {
 
     const data = this.props.restaurants;
     return this.props.restaurants.map(
-      restaurant => <Marker  longitude={restaurant.coordinates.longitude} latitude={restaurant.coordinates.latitude} ><img src="restaurants.png" /> </Marker>
+      restaurant => <Marker  longitude={restaurant.coordinates.longitude} latitude={restaurant.coordinates.latitude} ><img src="restaurants.png" alt="Restaurant" /> </Marker>
     )
   }
 

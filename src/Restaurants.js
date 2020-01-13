@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import restaurants from'./App.js';
 import axios from 'axios';
+import $ from 'jquery'
 class RestaurantsList extends Component{
   state = {
     reviews : []
@@ -18,19 +19,32 @@ class RestaurantsList extends Component{
     this.setState({reviews})
   })
   }
+  addReview = () => {
+    
+  }
 
   render(){
 
 console.log(this.state);
     return(
-      <ul>
-          { this.props.restaurants.map(restaurant =>  <li><img src={restaurant.image_url} class="restaurant_image"/>{restaurant.name} <br/> {restaurant.rating} <br/> <a href="#" onClick= {() => this.showReviews(restaurant.id)}> See Reviews </a> </li> )}
-
+      <div>
+      <div id="restaurants">
+          { this.props.restaurants.map(restaurant =>  <li><img src={restaurant.image_url} class="restaurant_image"/> {restaurant.name} <br/> Rating: {restaurant.rating} <br/> <a href="#reviews" onClick= {() => this.showReviews(restaurant.id)}> See Reviews </a> <br/></li> )}
+        </div>
+        <div id="reviews">
+        <a href="#add_review" onClick={() => this.addReview}> Add a Review </a>
            {
-             this.state.reviews.map(review => <li> {review.text} </li>)
+             this.state.reviews.map(review => <li> <img src={review.user.image_url} id="user_img"/>{review.user.name} <br/>
+             {review.time_created}<br/> {review.text} <br/> <a href={review.url}> Read more </a> </li>
+             )
+
            }
-           
-        </ul>
+
+          </div>
+          <div id="add_review">
+
+          </div>
+        </div>
 
 
 
