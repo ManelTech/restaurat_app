@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ReactMapGL , {Marker } from 'react-map-gl';
-//import Map from './Map.js';
+import PopUp from './PopUp.js';
 import Restaurants from './Restaurants.js';
 import axios from 'axios';
 import Markers from './Markers.js'
@@ -11,7 +11,7 @@ import { PropTypes } from 'react'
 class App extends Component {
   constructor(props){
     super(props)
-    // this.handler = this.handler.bind(this);
+
     this.state = {
       restaurants: [],
       viewport: {
@@ -22,7 +22,8 @@ class App extends Component {
       userLocation: {
         latitude: 48.350,
         longitude: 16
-      }
+      },
+      popup: false
     }
   }
 
@@ -57,13 +58,17 @@ componentDidMount(){
     })
     })
  }
-
+ togglePop = () => {
+    this.setState({
+      popup: !this.state.popup
+    });
+  };
 render(){
   const {viewport} = this.state;
   return (
     <div className="App">
      <div className="main">
-       <div className="map">
+       <div className="map" onClick={this.togglePop}>
        <ReactMapGL {...viewport}
          width="800px"
          height="600px"
@@ -79,6 +84,7 @@ render(){
    <Markers restaurants={this.state.restaurants} />
        </ReactMapGL>
        </div>
+       {this.state.popup ? <PopUp toggle={this.togglePop} /> : null}
        <div className="restaurants">
        <Restaurants restaurants= {this.state.restaurants} />
        </div>
