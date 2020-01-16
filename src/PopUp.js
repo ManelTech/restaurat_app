@@ -4,39 +4,53 @@ export default class PopUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       addedRestaurant:{
+      // addedRestaurant:{
        name: '',
-       address: ''
-     }
+       address: '',
+       image_url:'addedrestaurant.png',
+       rating: 'N/A',
+       coordinates: {
+         longitude: '',
+         latitude:''
+       }
+     //}
      };
   }
   handleClick = () => {
     this.props.toggle();
-  };
-  changeHandler = (event) => {
-     this.setState({username: event.target.value});
-   }
+  }
+  handleForm = (event) => {
+    console.log(event.target.value)
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({[nam]: val});
+  }
+  handleSubmit= (event) => {
+    event.preventDefault();
+    this.props.addRestaurant(this.state);
+  }
   render() {
     console.log(this.state);
+    console.log(this.props);
     return (
       <div className="modal">
         <div className="modal_content">
           <span className="close" onClick={this.handleClick}>
             &times;
           </span>
-          <form>
+          <form  onSubmit={this.handleSubmit}>
             <h3>Add a Restaurant!</h3>
             <p> Restaurant's Name </p>
-              <input type="text" name="name"  onChange={event => this.setState({ name: event.target.value })}
-              value={this.state.addedRestaurant.name}
+              <input type="text" name="name"  onChange= {this.handleForm}
+              value={this.state.restaurantName}
               placeholder="Enter Restaurant's name"/>
             <br />
             <p> Restaurant's Address </p>
-              <input type="text" name="address" onChange={event => this.setState({ address: event.target.value })}
-              value={this.state.addedRestaurant.addresss}
+              <input type="text" name="address" onChange={this.handleForm}
+              value={this.state.addresss}
               placeholder="Enter your adresse" />
             <br />
-            <input type="submit" />
+            <input value="Add Restaurant" type="submit"  />
           </form>
         </div>
       </div>

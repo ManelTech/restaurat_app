@@ -19,17 +19,13 @@ class RestaurantsList extends Component{
     this.setState({reviews})
   })
   }
-  addReview = () => {
-    
-  }
-
   render(){
 
 console.log(this.state);
     return(
       <div>
       <div id="restaurants">
-          { this.props.restaurants.map(restaurant =>  <li><img src={restaurant.image_url} class="restaurant_image"/> {restaurant.name} <br/> Rating: {restaurant.rating} <br/> <a href="#reviews" onClick= {() => this.showReviews(restaurant.id)}> See Reviews </a> <br/></li> )}
+          { this.props.restaurants.map(restaurant =>  <li><img src={restaurant.image_url} className="restaurant_image"/> {restaurant.name} <br/> Rating: {restaurant.rating} <br/> <a href="#reviews" onClick= {() => this.showReviews(restaurant.id)}> See Reviews </a> <br/></li> )}
         </div>
         <div id="reviews">
         <a href="#add_review" onClick={() => this.addReview}> Add a Review </a>

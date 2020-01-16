@@ -63,8 +63,15 @@ componentDidMount(){
       popup: !this.state.popup
     });
   };
+  addRestaurant= (newRestaurant) => {
+    console.log('addrest',newRestaurant);
+    this.state.restaurants.push(newRestaurant);
+    const restaurants = this.state.restaurants;
+    this.setState({restaurants});
+  }
 render(){
   const {viewport} = this.state;
+  console.log('restaurant',this.state.restaurants);
   return (
     <div className="App">
      <div className="main">
@@ -84,7 +91,7 @@ render(){
    <Markers restaurants={this.state.restaurants} />
        </ReactMapGL>
        </div>
-       {this.state.popup ? <PopUp toggle={this.togglePop} /> : null}
+       {this.state.popup ? <PopUp toggle={this.togglePop} addRestaurant={this.addRestaurant} /> : null}
        <div className="restaurants">
        <Restaurants restaurants= {this.state.restaurants} />
        </div>
