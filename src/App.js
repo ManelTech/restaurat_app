@@ -69,6 +69,7 @@ componentDidMount(){
     const restaurants = this.state.restaurants;
     this.setState({restaurants});
   }
+
 render(){
   const {viewport} = this.state;
   console.log('restaurant',this.state.restaurants);
