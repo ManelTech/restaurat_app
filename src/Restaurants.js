@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import restaurants from'./App.js';
 import axios from 'axios';
-import $ from 'jquery'
+
 class RestaurantsList extends Component{
   state = {
     reviews : []
@@ -24,6 +24,17 @@ class RestaurantsList extends Component{
 console.log(this.state);
     return(
       <div>
+      <div>
+      <form>
+      <h5> Filter by Rating: </h5>
+    <select >
+      <option disabled defaultValue>Ehne mehne Muh</option>
+      <option value="1">Test</option>
+      <option value="2">Test 2</option>
+    </select>
+    </form>
+  </div>
+     <div id="restaurants_reviews">
       <div id="restaurants">
           { this.props.restaurants.map(restaurant =>  <li><img src={restaurant.image_url} className="restaurant_image"/> {restaurant.name} <br/> Rating: {restaurant.rating} <br/> <a href="#reviews" onClick= {() => this.showReviews(restaurant.id)}> See Reviews </a> <br/></li> )}
         </div>
@@ -37,10 +48,10 @@ console.log(this.state);
            }
 
           </div>
-          <div id="add_review">
+         </div>
+         </div>
 
-          </div>
-        </div>
+
 
 
 

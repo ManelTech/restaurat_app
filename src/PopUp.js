@@ -10,8 +10,8 @@ export default class PopUp extends Component {
        image_url:'addedrestaurant.png',
        rating: 'N/A',
        coordinates: {
-         longitude: '',
-         latitude:''
+         latitude: '',
+         longitude:''
        }
      };
   }

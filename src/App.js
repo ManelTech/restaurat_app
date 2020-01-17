@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import ReactMapGL , {Marker } from 'react-map-gl';
+import Map from './Map.js';
 import PopUp from './PopUp.js';
 import Restaurants from './Restaurants.js';
 import axios from 'axios';
-import Markers from './Markers.js'
 
-import { PropTypes } from 'react'
+
+
 
 class App extends Component {
   constructor(props){
@@ -58,6 +59,9 @@ componentDidMount(){
     })
     })
  }
+ viewportChange= (viewport) => {
+   this.setState({viewport});
+ }
  togglePop = () => {
     this.setState({
       popup: !this.state.popup
@@ -71,26 +75,14 @@ componentDidMount(){
   }
 
 render(){
-  const {viewport} = this.state;
+const {viewport} = this.state;
   console.log('restaurant',this.state.restaurants);
   return (
     <div className="App">
      <div className="main">
        <div className="map" onClick={this.togglePop}>
-       <ReactMapGL {...viewport}
-         width="800px"
-         height="600px"
-         mapboxApiAccessToken={'pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazRlc3Y5eHowNjFmM25xd3kxNHF5dGRwIn0.MF6RC_cojTTpx9OSgud_Og'}
-         onViewportChange={viewport => this.setState({viewport})}
-         >
-         <Marker
-     latitude={this.state.userLocation.latitude}
-     longitude={this.state.userLocation.longitude}
-   >
-     <img className="location-icon" src="user-location.png" alt="You"/>
-   </Marker>
-   <Markers restaurants={this.state.restaurants} />
-       </ReactMapGL>
+       <Map viewport={this.state.viewport} restaurants={this.state.restaurants}userLocation={this.state.userLocation} state={this.state} viewportChange={this.viewportChange}/>
+
        </div>
        {this.state.popup ? <PopUp toggle={this.togglePop} addRestaurant={this.addRestaurant} /> : null}
        <div className="restaurants">
