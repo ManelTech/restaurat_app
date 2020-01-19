@@ -24,7 +24,8 @@ class App extends Component {
         latitude: 48.350,
         longitude: 16
       },
-      popup: false
+      popup: false,
+      filterValue: "05"
     }
   }
 
@@ -73,7 +74,11 @@ componentDidMount(){
     const restaurants = this.state.restaurants;
     this.setState({restaurants});
   }
-
+handleFilter= (filterValue) => {
+  this.setState({
+  filterValue: filterValue
+  })
+}
 render(){
 const {viewport} = this.state;
   console.log('restaurant',this.state.restaurants);
@@ -81,12 +86,12 @@ const {viewport} = this.state;
     <div className="App">
      <div className="main">
        <div className="map" onClick={this.togglePop}>
-       <Map viewport={this.state.viewport} restaurants={this.state.restaurants}userLocation={this.state.userLocation} state={this.state} viewportChange={this.viewportChange}/>
+       <Map viewport={this.state.viewport} restaurants={this.state.restaurants}userLocation={this.state.userLocation} state={this.state} viewportChange={this.viewportChange} filterValue={this.state.filterValue}/>
 
        </div>
        {this.state.popup ? <PopUp toggle={this.togglePop} addRestaurant={this.addRestaurant} /> : null}
        <div className="restaurants">
-       <Restaurants restaurants= {this.state.restaurants} />
+       <Restaurants restaurants= {this.state.restaurants} handleFilter={this.handleFilter} filterValue={this.state.filterValue} />
        </div>
      </div>
     </div>
