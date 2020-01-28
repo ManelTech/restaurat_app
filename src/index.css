@@ -24,10 +24,17 @@ img{
   height: 40px;
   width: 40px
 }
-.modal {
+.modal1 {
   position: fixed;
   z-index: 1;
   width: 20%;
+  height: 40%;
+  background-color: white;
+}
+.modal1 {
+  position: fixed;
+  z-index: 1;
+  width: 50%;
   height: 40%;
   background-color: white;
 }

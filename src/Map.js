@@ -3,13 +3,14 @@ import ReactMapGL,{ Marker } from "react-map-gl";
 import axios from "axios";
 import { PropTypes } from 'react';
 
+
 class Map extends PureComponent {
 handleViewportChange= () => {
   this.props.viewportChange(this.props.viewport)
 }
 
  render() {
-
+ console.log(this.props.userLocation)
   const {viewport} = this.props.state;
   const data = this.props.restaurants;
    return (

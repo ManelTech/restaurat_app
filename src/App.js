@@ -4,6 +4,7 @@ import ReactMapGL , {Marker } from 'react-map-gl';
 import Map from './Map.js';
 import PopUp from './PopUp.js';
 import Restaurants from './Restaurants.js';
+import PopUpReview from './PopUpReview.js'
 import axios from 'axios';
 
 
@@ -68,6 +69,8 @@ componentDidMount(){
       popup: !this.state.popup
     });
   };
+
+
   addRestaurant= (newRestaurant) => {
     console.log('addrest',newRestaurant);
     this.state.restaurants.push(newRestaurant);
@@ -81,7 +84,7 @@ handleFilter= (filterValue) => {
 }
 render(){
 const {viewport} = this.state;
-  console.log('restaurant',this.state.restaurants);
+  console.log('reviews',this.state.reviews);
   return (
     <div className="App">
      <div className="main">
@@ -90,9 +93,9 @@ const {viewport} = this.state;
 
        </div>
        {this.state.popup ? <PopUp toggle={this.togglePop} addRestaurant={this.addRestaurant} /> : null}
-       <div className="restaurants">
+       <div className="restaurants"  >
        <Restaurants restaurants= {this.state.restaurants} handleFilter={this.handleFilter} filterValue={this.state.filterValue} />
-       </div>
+        </div>
      </div>
     </div>
   )

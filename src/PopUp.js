@@ -8,7 +8,7 @@ export default class PopUp extends Component {
        name: '',
        address: '',
        image_url:'addedrestaurant.png',
-       rating: 'N/A',
+       rating: '0',
        coordinates: {
          latitude: '',
          longitude:''
@@ -24,8 +24,8 @@ export default class PopUp extends Component {
     let val = event.target.value;
     this.setState({[nam]: val});
   }
-  getCoordinates= (newRestaurantAddress) => {
-    axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.mapbox.com/geocoding/v5/mapbox.places/${newRestaurantAddress}.json?types=address&limit=1&access_token=pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazQ2MDdxYjYwZHZoM3Nwamdtbm0yM2V4In0.cXAVeDfxx1GU_t3hydDhrw`)
+  getCoordinates= () => {
+    axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.mapbox.com/geocoding/v5/mapbox.places/${this.state.address}.json?types=address&limit=1&access_token=pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazQ2MDdxYjYwZHZoM3Nwamdtbm0yM2V4In0.cXAVeDfxx1GU_t3hydDhrw`)
   .then(res => {
     const data = res.data.features;
   console.log(data[0].center);
@@ -37,24 +37,39 @@ export default class PopUp extends Component {
 
   }
   })
+
     this.props.addRestaurant(this.state);
   })
+  .then(() => {
+      this.handlePopUp();
+  })
+  .catch(function (error) {
+   // handle error
+   console.log('error',error);
+ })
   }
   handleSubmit= (event) => {
     event.preventDefault();
-    this.getCoordinates(this.state.address);
+    this.getCoordinates();
 
   }
+  handlePopUp= () => {
+    console.log('handling popup')
+    this.props.toggle();
+  }
+  closePopup= () => {
+    setTimeout(this.handleClick(), 10);
+  }
   render() {
-    console.log(this.state);
-    console.log(this.props);
+    // console.log(this.state);
+    console.log('this.props',this.props);
     return (
-      <div className="modal">
+      <div className="modal1">
         <div className="modal_content">
           <span className="close" onClick={this.handleClick}>
             &times;
           </span>
-          <form  >
+          <form onSubmit={this.handleSubmit} >
             <h3>Add a Restaurant!</h3>
             <p> Restaurant's Name </p>
               <input type="text" name="name"  onChange= {this.handleForm}
@@ -66,10 +81,8 @@ export default class PopUp extends Component {
               value={this.state.addresss}
               placeholder="Enter your adresse" />
             <br />
-            <button
-            type="submit"
-            className="btn btn-info"
-            onClick={this.handleSubmit}> Add Restaurant </button>
+            <input type="submit"
+          onClick={this.handleSubmit} />
           </form>
         </div>
       </div>
