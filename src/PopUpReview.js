@@ -34,16 +34,19 @@ class PopUpReview extends Component {
   handleSubmit= (event) => {
     event.preventDefault();
     this.props.addReview(this.state);
+    this.handlePopUp();
 
+  }
+  handlePopUp= () => {
+    console.log('handling popup')
+    this.props.toggle();
   }
   render() {
     console.log(this.state)
     return (
       <div className="modal2">
         <div className="modal_content">
-          <span className="close" onClick={this.handleClick}>
-            &times;
-          </span>
+
           <form onSubmit={this.handleSubmit} >
             <h3>Add a Review</h3>
             <p> User Name </p>

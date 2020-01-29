@@ -47,18 +47,18 @@ togglePopReview = () => {
     console.log(this.state.popup)
     return(
       <div>
-       <div>
-         <form>
+       <div className="filter">
+         <form >
           <label>
            <h5> Filter by Rating: </h5>
            <select  onChange={this.handleChange} onClick={this.handleSubmit} >
       <option disabled defaultValue>Filter Restaurants</option>
-      <option value="05"> Show all Restaurants </option>
+      <option value="05"> All Restaurants </option>
       <option value="55"> 5 Stars</option>
-      <option value="45">Highest Rating: 4 to 5</option>
+      <option value="45"> 4 to 5 Stars</option>
       <option value="35">3 to 5 Stars</option>
-      <option value="02">Lowest Rating: 0 to 2 Stars</option>
-      <option value="34"> 3 to 4 </option>
+      <option value="02"> 0 to 2 Stars</option>
+      <option value="34"> 3 to 4 Stars </option>
     </select>
     </label>
     </form>
@@ -66,7 +66,7 @@ togglePopReview = () => {
      <div id="restaurants_reviews">
       <div id="restaurants">
 
-          { this.props.restaurants.filter(restaurant=>this.props.filterValue[0]<= restaurant.rating&&restaurant.rating<=this.props.filterValue[1]).map(restaurant =>  <li><img src={restaurant.image_url} className="restaurant_image"/> {restaurant.name} <br/> Rating: {restaurant.rating} <br/> <a href="#reviews" onClick= {() => this.getReviews(restaurant.id)}> See Reviews </a> <br/></li> )}
+          { this.props.restaurants.filter(restaurant=>this.props.filterValue[0]<= restaurant.rating&&restaurant.rating<=this.props.filterValue[1]).map(restaurant => <div className="restaurant_div"> <img src={restaurant.image_url} className="restaurant_image"/> {restaurant.name} <br/> Rating: {restaurant.rating} <br/> <a href="#reviews" onClick= {() => this.getReviews(restaurant.id)}> See Reviews </a> <br/></div> )}
         </div>
         <div id="reviews" >
           <a href="#add_review" onClick={this.togglePopReview}> Add a Review </a>

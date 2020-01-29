@@ -1,14 +1,32 @@
 .main{
   display: flex;
   flex-direction: row;
+
+}
+
+#restaurants_reviews{
+  height: 400px;
+  width: 340px;
+  overflow-y: scroll;
+}
+.header {
+  background-color: #C9E265;
+}
+
+.logo{
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+}
+.header_main{
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.main div{
-  padding: 20px;
+h2 {
+  color: white;
 }
-#restaurants_reviews{
-  height: 400px;
-  width: 300px;
-  overflow-y: scroll;
+.filter{
+  padding-bottom: 30px;
 }

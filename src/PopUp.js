@@ -8,7 +8,7 @@ export default class PopUp extends Component {
        name: '',
        address: '',
        image_url:'addedrestaurant.png',
-       rating: '0',
+       rating: '',
        coordinates: {
          latitude: '',
          longitude:''
@@ -75,6 +75,11 @@ export default class PopUp extends Component {
               <input type="text" name="name"  onChange= {this.handleForm}
               value={this.state.restaurantName}
               placeholder="Enter Restaurant's name"/>
+            <br />
+            <p> Rating </p>
+              <input type="text" name="rating"  onChange= {this.handleForm}
+              value={this.state.rating}
+              placeholder="Enter Rating"/>
             <br />
             <p> Restaurant's Address </p>
               <input type="text" name="address" onChange={this.handleForm}

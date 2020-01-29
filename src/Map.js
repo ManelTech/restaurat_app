@@ -15,8 +15,8 @@ handleViewportChange= () => {
   const data = this.props.restaurants;
    return (
      <ReactMapGL {...viewport}
-       width="800px"
-       height="600px"
+     width="1000px"
+     height="600px"
        mapboxApiAccessToken={'pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazRlc3Y5eHowNjFmM25xd3kxNHF5dGRwIn0.MF6RC_cojTTpx9OSgud_Og'}
        onViewportChange={this.handleViewportChange}
        >

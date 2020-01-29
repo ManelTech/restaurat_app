@@ -6,6 +6,7 @@ import PopUp from './PopUp.js';
 import Restaurants from './Restaurants.js';
 import PopUpReview from './PopUpReview.js'
 import axios from 'axios';
+import Header from './Header.js';
 
 
 
@@ -22,8 +23,8 @@ class App extends Component {
         zoom: 13
       },
       userLocation: {
-        latitude: 48.350,
-        longitude: 16
+        latitude: 0,
+        longitude: 0
       },
       popup: false,
       filterValue: "05"
@@ -84,9 +85,12 @@ handleFilter= (filterValue) => {
 }
 render(){
 const {viewport} = this.state;
-  console.log('reviews',this.state.reviews);
+  console.log('userlocation',this.state.userLocation);
   return (
     <div className="App">
+     <div className="header">
+     <Header />
+     </div>
      <div className="main">
        <div className="map" onClick={this.togglePop}>
        <Map viewport={this.state.viewport} restaurants={this.state.restaurants}userLocation={this.state.userLocation} state={this.state} viewportChange={this.viewportChange} filterValue={this.state.filterValue}/>
