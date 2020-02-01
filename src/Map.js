@@ -5,20 +5,20 @@ import { PropTypes } from 'react';
 
 
 class Map extends PureComponent {
-handleViewportChange= () => {
-  this.props.viewportChange(this.props.viewport)
+handleViewportChange= (viewport) => {
+  this.props.viewportChange(viewport)
 }
 
  render() {
- console.log(this.props.userLocation)
-  const {viewport} = this.props.state;
+
+  const viewport = this.props.viewport;
   const data = this.props.restaurants;
    return (
      <ReactMapGL {...viewport}
      width="1000px"
      height="600px"
        mapboxApiAccessToken={'pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazRlc3Y5eHowNjFmM25xd3kxNHF5dGRwIn0.MF6RC_cojTTpx9OSgud_Og'}
-       onViewportChange={this.handleViewportChange}
+       onViewportChange= {this.handleViewportChange(viewport)}
        >
        <Marker
    latitude={this.props.userLocation.latitude}

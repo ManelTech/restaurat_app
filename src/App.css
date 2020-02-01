@@ -1,18 +1,21 @@
 .main{
   display: flex;
   flex-direction: row;
-
 }
 
 #restaurants_reviews{
-  height: 400px;
+  height: 450px;
   width: 340px;
   overflow-y: scroll;
+  padding-left: 8px;
+
 }
 .header {
   background-color: #C9E265;
 }
-
+a{
+  color:  #9FBB72;
+}
 .logo{
   width: 70px;
   height: 70px;
@@ -29,4 +32,40 @@ h2 {
 }
 .filter{
   padding-bottom: 30px;
+  padding-left: 8px;
+
+}
+.restaurant_div{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+
+}
+img{
+  widht: 30px;
+  height: 30px;
+
+}
+.restaurant_image{
+  width: 100px;
+  height: 100px;
+}
+#user_img{
+  border-radius: 50%;
+  height: 40px;
+  width: 40px
+}
+
+.modal1 {
+  position: fixed;
+  z-index: 1;
+  width: 25%;
+  height: 60%;
+  background-color: white;
+}
+.close{
+  float: right;
+}
+.restaurant_details{
+  padding-left: 10px;
 }

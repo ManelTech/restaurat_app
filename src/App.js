@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ReactMapGL , {Marker } from 'react-map-gl';
+import ReactMapGL , {Marker , LinearInterpolator, FlyToInterpolator} from 'react-map-gl';
 import Map from './Map.js';
 import PopUp from './PopUp.js';
 import Restaurants from './Restaurants.js';
@@ -62,8 +62,9 @@ componentDidMount(){
     })
     })
  }
- viewportChange= (viewport) => {
-   this.setState({viewport});
+ _viewportChange= (viewport) => {
+   console.log('viewport',viewport);
+   this.setState({viewport: viewport});
  }
  togglePop = () => {
     this.setState({
@@ -85,15 +86,19 @@ handleFilter= (filterValue) => {
 }
 render(){
 const {viewport} = this.state;
-  console.log('userlocation',this.state.userLocation);
+  console.log('viewport',this.state.viewport);
   return (
     <div className="App">
      <div className="header">
      <Header />
      </div>
      <div className="main">
-       <div className="map" onClick={this.togglePop}>
-       <Map viewport={this.state.viewport} restaurants={this.state.restaurants}userLocation={this.state.userLocation} state={this.state} viewportChange={this.viewportChange} filterValue={this.state.filterValue}/>
+       <div className="map" onClick={this.togglePop} >
+       <Map
+        viewport={this.state.viewport} restaurants={this.state.restaurants}
+        userLocation={this.state.userLocation}
+       viewportChange={this._viewportChange} filterValue={this.state.filterValue}
+      />
 
        </div>
        {this.state.popup ? <PopUp toggle={this.togglePop} addRestaurant={this.addRestaurant} /> : null}
