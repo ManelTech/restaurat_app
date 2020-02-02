@@ -2,6 +2,7 @@ import React, { Component }from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import PopUpReview from './PopUpReview.js';
+import StarRatings from 'react-star-ratings';
 class Restaurant extends Component{
   state = {
     reviews : [],
@@ -31,22 +32,25 @@ addReview= (newReview) => {
   this.setState({reviews});
 }
 render(){
+
  return (
-    <div>
-   <div className="restaurant_div">
+    <div className="restaurant_div">
+   <div className="restaurant_content">
      <div>
       <img src={this.props.restaurant.image_url} className="restaurant_image"/>
       </div>
       <div className="restaurant_details">
        <h5>{this.props.restaurant.name} </h5>
-       <p className="rating"> Rating: {this.props.restaurant.rating} </p>
+       <StarRatings rating={this.props.restaurant.rating} starDimension="20px" starRatedColor="#EBB518"
+      starSpacing="5px"/> <br/>
        <a href="#reviews" onClick= {() => this.getReviews(this.props.restaurant.id)}> See Reviews </a> <br/>
+       <a href="#add_review" onClick={this.togglePopReview}> Add a Review </a>
        </div>
        </div>
 
 
        <div id="reviews" >
-         <a href="#add_review" onClick={this.togglePopReview}> Add a Review </a>
+
               {this.state.popup ? <PopUpReview toggle={this.togglePopReview} addReview={this.addReview} /> : null}
           {
             this.state.reviews.map(review => <div> <img src={review.user.image_url} id="user_img"/>{review.user.name} <br/>

@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import axios from 'axios'
+import React, { PureComponent } from "react";
+import axios from "axios";
+import StarRatings from "react-star-ratings";
 
-export default class PopUp extends Component {
+export default class PopUp extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
        name: '',
        address: '',
        image_url:'addedrestaurant.png',
-       rating: '',
+       rating: 1,
        coordinates: {
          latitude: '',
          longitude:''
@@ -53,6 +54,7 @@ export default class PopUp extends Component {
     this.getCoordinates();
 
   }
+
   handlePopUp= () => {
     console.log('handling popup')
     this.props.toggle();
@@ -61,6 +63,7 @@ export default class PopUp extends Component {
     setTimeout(this.handleClick(), 10);
   }
   render() {
+
     // console.log(this.state);
     console.log('this.props',this.props);
     return (
@@ -76,11 +79,16 @@ export default class PopUp extends Component {
               value={this.state.restaurantName}
               placeholder="Enter Restaurant's name"/>
             <br />
-            <p> Rating </p>
-              <input type="text" name="rating"  onChange= {this.handleForm}
-              value={this.state.rating}
-              placeholder="Enter Rating"/>
-            <br />
+            <div className="ratings">
+            <StarRatings
+          rating={this.state.rating}
+          numberOfStars={5}
+          changeRating={rating => this.setState({ rating })}
+          starRatedColor="#EBB518"
+          starDimension="20px"
+          starSpacing="1px"
+        />
+        </div>
             <p> Restaurant's Address </p>
               <input type="text" name="address" onChange={this.handleForm}
               value={this.state.addresss}
