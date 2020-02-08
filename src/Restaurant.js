@@ -24,6 +24,7 @@ getReviews = (a) => {
   const reviews = res.data.reviews ;
   this.setState({reviews})
 })
+this.togglePopReview();
 }
 addReview= (newReview) => {
 
@@ -44,20 +45,21 @@ render(){
        <StarRatings rating={this.props.restaurant.rating} starDimension="20px" starRatedColor="#EBB518"
       starSpacing="5px"/> <br/>
        <a href="#reviews" onClick= {() => this.getReviews(this.props.restaurant.id)}> See Reviews </a> <br/>
-       <a href="#add_review" onClick={this.togglePopReview}> Add a Review </a>
+
        </div>
        </div>
 
 
        <div id="reviews" >
 
-              {this.state.popup ? <PopUpReview toggle={this.togglePopReview} addReview={this.addReview} /> : null}
+
           {
-            this.state.reviews.map(review => <div> <img src={review.user.image_url} id="user_img"/>{review.user.name} <br/>
-            {review.time_created}<br/> {review.text} <br/> <a href={review.url}> Read more </a> </div>
+            this.state.reviews.map(review => <div className="review_details"> <img src={review.user.image_url} id="user_img"/>{review.user.name} <br/>
+            {review.time_created}<br/><p className="review_text"> {review.text}</p> <br/> <a href={review.url}> Read more </a> </div>
             )
 
           }
+              {this.state.popup ? <PopUpReview toggle={this.togglePopReview} addReview={this.addReview} /> : null}
 
          </div>
       </div>
