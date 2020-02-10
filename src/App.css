@@ -69,7 +69,7 @@ img{
 }
 .close{
   float: right;
-  background-color: #C9E265;
+  background-color:  #C9E265;
   cursor: pointer;
   width: 25px;
   height: 25px;
@@ -95,3 +95,12 @@ img{
   border: outset;
   padding: 5px;
 }
+ input[type=submit] {
+   background-color:  #C9E265;
+border: none;
+color: white;
+padding: 10px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+ }

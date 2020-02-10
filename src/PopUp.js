@@ -94,7 +94,7 @@ export default class PopUp extends PureComponent {
               value={this.state.addresss}
               placeholder="Enter your adresse" />
             <br />
-            <input type="submit" name="save"
+            <input type="submit" value="Save"
           onClick={this.handleSubmit} />
           </form>
         </div>

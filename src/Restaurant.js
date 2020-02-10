@@ -25,6 +25,7 @@ getReviews = (a) => {
   this.setState({reviews})
 })
 this.togglePopReview();
+
 }
 addReview= (newReview) => {
 
@@ -63,7 +64,7 @@ render(){
 
          </div>
       </div>
-      //Reviews
+
 
  )
 }
