@@ -20,7 +20,6 @@ export default class PopUp extends PureComponent {
     this.props.toggle();
   }
   handleForm = (event) => {
-    console.log(event.target.value)
     let nam = event.target.name;
     let val = event.target.value;
     this.setState({[nam]: val});
@@ -29,7 +28,6 @@ export default class PopUp extends PureComponent {
     axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.mapbox.com/geocoding/v5/mapbox.places/${this.state.address}.json?types=address&limit=1&access_token=pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazQ2MDdxYjYwZHZoM3Nwamdtbm0yM2V4In0.cXAVeDfxx1GU_t3hydDhrw`)
   .then(res => {
     const data = res.data.features;
-  console.log(data[0].center);
   const coordinates= data[0].center;
   this.setState({
     coordinates:{
@@ -53,19 +51,15 @@ export default class PopUp extends PureComponent {
     event.preventDefault();
     this.getCoordinates();
 
+
   }
 
   handlePopUp= () => {
-    console.log('handling popup')
     this.props.toggle();
   }
-  closePopup= () => {
-    setTimeout(this.handleClick(), 10);
-  }
+
   render() {
 
-    // console.log(this.state);
-    console.log('this.props',this.props);
     return (
       <div className="modal1">
         <div className="modal_content">

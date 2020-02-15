@@ -104,3 +104,6 @@ text-decoration: none;
 margin: 4px 2px;
 cursor: pointer;
  }
+ input[type=textarea] {
+   height: 100px;
+ }

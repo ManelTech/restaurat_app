@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import restaurants from'./App.js';
+
 import axios from 'axios';
 
 import Restaurant from './Restaurant.js'
@@ -12,7 +12,7 @@ class Restaurants extends Component{
   }
 
     handleChange= (event) => {
-      console.log(event.target.value)
+    
       const selectedValue= event.target.value;
       this.setState({selectedValue: selectedValue
       });
@@ -24,6 +24,7 @@ class Restaurants extends Component{
 
 
     render(){
+      console.log('restaurants,restaurants', this.props.restaurants);
       return(
         <div>
          <div className="filter">
