@@ -1,0 +1,27 @@
+.restaurant_content{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+}
+.restaurant_image{
+  width: 120px;
+  height: 120px;
+}
+#user_img{
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  padding-right: 5px;
+}
+.restaurant_details{
+  padding-left: 10px;
+}
+.restaurant_content:hover{
+  background-color:  #C9E265;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.review_details{
+  border: outset;
+  padding: 5px;
+}

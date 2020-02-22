@@ -1,0 +1,11 @@
+.logo{
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+}
+.header_main{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,11 @@
+#restaurants_reviews{
+  height: 450px;
+  width: 340px;
+  overflow-y: scroll;
+  padding-left: 8px;
+
+}
+.filter{
+  padding-bottom: 30px;
+  padding-left: 8px;
+}

@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import axios from "axios";
 import StarRatings from "react-star-ratings";
+import './PopUp.css';
 
 export default class PopUp extends PureComponent {
   constructor(props) {
