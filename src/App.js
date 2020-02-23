@@ -55,9 +55,6 @@ componentDidMount(){
  _viewportChange= (viewport) => {
    this.setState({viewport: viewport});
  }
- togglePop = () => {
-    this.setState({popup: !this.state.popup});
-  };
   addRestaurant= (newRestaurant) => {
     const restaurantslist = this.state.restaurants;
     this.setState({restaurants: [...restaurantslist, newRestaurant]});
