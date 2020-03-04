@@ -23,6 +23,7 @@ class Restaurant extends Component{
 })
 .then(res => {
   const reviews = res.data.reviews ;
+  console.log(res.data);
   this.setState({reviews})
 })
   this.togglePopReview();
@@ -33,7 +34,8 @@ class Restaurant extends Component{
 }
   render(){
     return (
-      <div className="restaurant_div">
+      <div>
+      <div className="restaurant_div" onClick= {() => this.getReviews(this.props.restaurant.id)}>
         <div className="restaurant_content">
           <div>
             <img src={this.props.restaurant.image_url} alt="restaurant_img" className="restaurant_image"/>
@@ -47,13 +49,15 @@ class Restaurant extends Component{
         </div>
       <div id="reviews" >
           {
-            this.state.reviews.map(review => <div className="review_details"> <img src={review.user.image_url} alt="user_img" id="user_img"/>{review.user.name} <br/>
-            {review.time_created}<br/><p className="review_text"> {review.text}</p> <br/> <a href={review.url}> Read more </a> </div>
+            this.state.reviews.map(review => <div className="review_details"> <img src={review.user.image_url} alt="user_img" id="user_img"/>{review.user.name} <br/><StarRatings rating={review.rating} starDimension="20px" starRatedColor="#EBB518"
+            starSpacing="5px"/> <br/>{review.time_created}<br/><p className="review_text"> {review.text}</p> <br/> <a href={review.url}> Read more </a> </div>
             )
           }
-          {this.state.popup ? <PopUpReview toggle={this.togglePopReview} addReview={this.addReview} /> : null}
+
 
       </div>
+    </div>
+    {this.state.popup ? <PopUpReview toggle={this.togglePopReview} addReview={this.addReview} /> : null}
     </div>
    )
  }

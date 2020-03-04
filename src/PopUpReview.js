@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './PopUpReview.css';
+import StarRatings from "react-star-ratings";
 
 class PopUpReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
        text: '',
+       rating:1,
        user: {
          image_url: 'addedrestaurant.png',
          name:''
@@ -48,6 +50,9 @@ class PopUpReview extends Component {
             <input type="text" name="name"  onChange= {this.handleFormUser}
             value={this.state.user.name} placeholder="Enter your name"/>
             <br />
+            <p> Rating </p>
+            <StarRatings rating={this.state.rating}  numberOfStars={5} changeRating={rating => this.setState({ rating })} starRatedColor="#EBB518"
+            starDimension="20px" starSpacing="1px" />
             <p> Review </p>
             <input type="textarea" name="text" onChange={this.handleForm}  value={this.state.text}/>
             <br />
