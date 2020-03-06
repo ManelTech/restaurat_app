@@ -17,7 +17,7 @@ class Restaurants extends Component{
   }
     render(){
       return(
-        <div>
+        <div className="restaurants_div">
           <div className="filter">
             <form >
               <label>
@@ -36,7 +36,7 @@ class Restaurants extends Component{
           </div>
           <div id="restaurants_reviews">
             <div id="restaurants">
-              { this.props.restaurants.filter(restaurant=>this.props.filterValue[0]<= restaurant.rating&&restaurant.rating<=this.props.filterValue[1]).map(restaurant =>  <Restaurant restaurant = {restaurant} />)}
+              { this.props.restaurants.filter(restaurant=>this.props.filterValue[0]<= restaurant.rating&&restaurant.rating<=this.props.filterValue[1]).map(restaurant =>  <Restaurant key={restaurant.id} restaurant = {restaurant} />)}
             </div>
           </div>
         </div>

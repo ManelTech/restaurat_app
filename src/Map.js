@@ -22,8 +22,8 @@ handleViewportChange= (viewport) => {
         {this.state.popup ? <PopUp toggle={this.togglePop} handleFilter={this.props.handleFilter} addRestaurant={this.props.addRestaurant} /> : null}
       </div>
       <ReactMapGL {...viewport} onClick={this.togglePop}
-      width="1000px"
-      height="600px"
+      width="70vw"
+      height="90vh"
       mapboxApiAccessToken={'pk.eyJ1IjoibWFudWVsbGE5NCIsImEiOiJjazRlc3Y5eHowNjFmM25xd3kxNHF5dGRwIn0.MF6RC_cojTTpx9OSgud_Og'}
       onViewportChange= {this.handleViewportChange(viewport)} >
       <Marker latitude={this.props.userLocation.latitude} longitude={this.props.userLocation.longitude}>

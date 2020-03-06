@@ -1,9 +1,14 @@
 .main{
+  position: absolute;
   display: flex;
   flex-direction: row;
+  height: 90vh;
+  width: 100vw;
 }
 .header {
   background-color: #C9E265;
+  height: 10vh;
+  width: 100vw;
 }
 a{
   color:  #9FBB72;
@@ -12,6 +17,16 @@ h2 {
   color: white;
 }
 img{
-  widht: 30px;
-  height: 30px;
+
+  height: 5vh;
+}
+.map{
+  width: 70vw;
+  height: 90vh;
+  flex-grow: 1;
+}
+.restaurants{
+  width: 30vw;
+  height: 90vh;
+
 }

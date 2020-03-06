@@ -67,7 +67,7 @@ export default class PopUp extends PureComponent {
           <span className="close" onClick={this.handleClick}>
             &times;
           </span>
-          <form onSubmit={this.handleSubmit} >
+          <form onSubmit={this.handleSubmit} className="form">
             <h3>Add a Restaurant!</h3>
             <p> Restaurant's Name </p>
               <input type="text" name="name"  onChange= {this.handleForm}

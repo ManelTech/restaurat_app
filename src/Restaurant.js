@@ -49,7 +49,7 @@ class Restaurant extends Component{
         </div>
       <div id="reviews" >
           {
-            this.state.reviews.map(review => <div className="review_details"> <img src={review.user.image_url} alt="user_img" id="user_img"/>{review.user.name} <br/><StarRatings rating={review.rating} starDimension="20px" starRatedColor="#EBB518"
+            this.state.reviews.map(review => <div key={review.id} className="review_details"> <img src={review.user.image_url} alt="user_img" id="user_img"/>{review.user.name} <br/><StarRatings rating={review.rating} starDimension="20px" starRatedColor="#EBB518"
             starSpacing="5px"/> <br/>{review.time_created}<br/><p className="review_text"> {review.text}</p> <br/> <a href={review.url}> Read more </a> </div>
             )
           }
