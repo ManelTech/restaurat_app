@@ -13,7 +13,7 @@ class App extends Component {
       viewport: {
         longitude: -122.45,
         latitude: 37.78,
-        zoom: 13
+        zoom: 13,
       },
       userLocation: {
         latitude: 0,
@@ -65,17 +65,17 @@ handleFilter= (filterValue) => {
   render(){
     return (
       <div className="App">
-        <div className="header">
-          <Header />
-        </div>
+
+          <Header className="header" />
+
         <div className="main">
-          <div className="map">
-            <Map viewport={this.state.viewport} restaurants={this.state.restaurants}
+          <div className="map_main">
+            <Map  viewport={this.state.viewport} restaurants={this.state.restaurants}
             userLocation={this.state.userLocation} filterValue={this.state.filterValue}
             viewportChange={this._viewportChange} handleFilter={this.handleFilter} addRestaurant={this.addRestaurant}/>
           </div>
-          <div className="restaurants"  >
-            <Restaurants restaurants= {this.state.restaurants} handleFilter={this.handleFilter} filterValue={this.state.filterValue} />
+          <div className="restauranrs_main">
+            <Restaurants className="restaurants" restaurants= {this.state.restaurants} handleFilter={this.handleFilter} filterValue={this.state.filterValue} />
           </div>
         </div>
       </div>

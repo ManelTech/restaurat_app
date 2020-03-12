@@ -1,14 +1,20 @@
 .main{
-  position: absolute;
   display: flex;
   flex-direction: row;
-  height: 90vh;
-  width: 100vw;
+  justify-content: flex-start;
+  align-items: flex-start;
+
 }
-.header {
-  background-color: #C9E265;
-  height: 10vh;
-  width: 100vw;
+
+@media screen and (max-width: 450px) {
+  .main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+.map_div{
+  width: 100%;
+}
 }
 a{
   color:  #9FBB72;
@@ -20,13 +26,10 @@ img{
 
   height: 5vh;
 }
-.map{
-  width: 70vw;
-  height: 90vh;
-  flex-grow: 1;
-}
-.restaurants{
-  width: 30vw;
-  height: 90vh;
 
-}
+
+
+/* .App {
+  display: flex;
+  flex-direction: column;
+} */

@@ -1,7 +1,6 @@
 #restaurants_reviews{
   position: absolute;
-  height: 80vh;
-  width: 25vw;
+  height: 60vh;
   overflow-y: scroll;
   padding-left: 8px;
 
@@ -11,6 +10,6 @@
   padding-left: 8px;
 }
 .restaurants_div{
-  height: 80vh;
-  width: 25vw;
+  height: 70vh;
+  width: 100%;
 }

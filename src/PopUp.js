@@ -18,6 +18,7 @@ export default class PopUp extends PureComponent {
      };
   }
   handleClick = () => {
+    console.log("close");
     this.props.toggle();
   }
   handleForm = (event) => {
@@ -51,11 +52,9 @@ export default class PopUp extends PureComponent {
   handleSubmit= (event) => {
     event.preventDefault();
     this.getCoordinates();
-
-
   }
-
-  handlePopUp= () => {
+  handlePopUp = () => {
+    console.log("close");
     this.props.toggle();
   }
 
