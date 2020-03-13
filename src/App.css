@@ -6,16 +6,7 @@
 
 }
 
-@media screen and (max-width: 450px) {
-  .main {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-.map_div{
-  width: 100%;
-}
-}
+
 a{
   color:  #9FBB72;
 }
@@ -26,8 +17,27 @@ img{
 
   height: 5vh;
 }
+Map{
+  width: 60%;
+}
 
-
+@media only screen and (max-width: 600px) {
+  .main {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+.overlays{
+  width: 100vw !important;
+}
+/* .restaurant_image{
+  width: 15vh;
+  height: 15vh;
+} */
+.header_main{
+  width: 100%;
+}
+}
 
 /* .App {
   display: flex;

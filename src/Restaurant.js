@@ -37,7 +37,7 @@ class Restaurant extends Component{
       <div>
       <div className="restaurant_div" onClick= {() => this.getReviews(this.props.restaurant.id)}>
         <div className="restaurant_content">
-          <div>
+          <div className="image_div">
             <img src={this.props.restaurant.image_url} alt="restaurant_img" className="restaurant_image"/>
           </div>
           <div className="restaurant_details">
