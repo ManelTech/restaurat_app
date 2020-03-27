@@ -65,18 +65,12 @@ handleFilter= (filterValue) => {
   render(){
     return (
       <div className="App">
-
-          <Header className="header" />
-
+        <Header className="header" />
         <div className="main">
-
             <Map  viewport={this.state.viewport} restaurants={this.state.restaurants}
             userLocation={this.state.userLocation} filterValue={this.state.filterValue}
             viewportChange={this._viewportChange} handleFilter={this.handleFilter} addRestaurant={this.addRestaurant}/>
-
-
             <Restaurants className="restaurants" restaurants= {this.state.restaurants} handleFilter={this.handleFilter} filterValue={this.state.filterValue} />
-          
         </div>
       </div>
      )

@@ -3,7 +3,6 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-
 }
 
 
@@ -13,8 +12,10 @@ a{
 h2 {
   color: white;
 }
-img{
-
+.restaurants_marker{
+  height: 5vh;
+}
+.location-icon{
   height: 5vh;
 }
 Map{
@@ -30,16 +31,11 @@ Map{
 .overlays{
   width: 100vw !important;
 }
-/* .restaurant_image{
-  width: 15vh;
-  height: 15vh;
-} */
+
 .header_main{
   width: 100%;
 }
+#restaurants_reviews{
+  width: 80vw;
 }
-
-/* .App {
-  display: flex;
-  flex-direction: column;
-} */
+}

@@ -18,7 +18,6 @@ export default class PopUp extends PureComponent {
      };
   }
   handleClick = () => {
-    console.log("close");
     this.props.toggle();
   }
   handleForm = (event) => {
@@ -54,7 +53,6 @@ export default class PopUp extends PureComponent {
     this.getCoordinates();
   }
   handlePopUp = () => {
-    console.log("close");
     this.props.toggle();
   }
 
@@ -75,21 +73,21 @@ export default class PopUp extends PureComponent {
             <br />
             <div className="ratings">
             <StarRatings
-          rating={this.state.rating}
-          numberOfStars={5}
-          changeRating={rating => this.setState({ rating })}
-          starRatedColor="#EBB518"
-          starDimension="20px"
-          starSpacing="1px"
-        />
-        </div>
+            rating={this.state.rating}
+            numberOfStars={5}
+            changeRating={rating => this.setState({ rating })}
+            starRatedColor="#EBB518"
+            starDimension="20px"
+            starSpacing="1px"
+            />
+            </div>
             <p> Restaurant's Address </p>
               <input type="text" name="address" onChange={this.handleForm}
               value={this.state.addresss}
               placeholder="Enter your adresse" />
             <br />
             <input type="submit" value="Save"
-          onClick={this.handleSubmit} />
+            onClick={this.handleSubmit} />
           </form>
         </div>
       </div>

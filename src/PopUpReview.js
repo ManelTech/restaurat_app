@@ -37,7 +37,6 @@ class PopUpReview extends Component {
 
   }
   handlePopUp= () => {
-    console.log('handling popup')
     this.props.toggle();
   }
   render() {

@@ -10,7 +10,6 @@ class Restaurant extends Component{
     popup: false
   }
   togglePopReview = () => {
-    console.log('toggle')
      this.setState({
        popup: !this.state.popup
      });
@@ -23,7 +22,6 @@ class Restaurant extends Component{
 })
 .then(res => {
   const reviews = res.data.reviews ;
-  console.log(res.data);
   this.setState({reviews})
 })
   this.togglePopReview();
